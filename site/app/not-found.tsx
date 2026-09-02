@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { SiteLink } from '@/components/site-link';
 
 export default function NotFound() {
   return (
@@ -7,8 +7,8 @@ export default function NotFound() {
       <h1>Такой страницы нет</h1>
       <p>Вернитесь к трём типам задач или откройте квалификационную форму.</p>
       <div className="hero-actions">
-        <Link className="button button-primary" href="/">На главную</Link>
-        <Link className="text-link" href="/contacts/">Описать задачу</Link>
+        <SiteLink className="button button-primary" href="/">На главную</SiteLink>
+        <SiteLink className="text-link" href="/contacts/">Описать задачу</SiteLink>
       </div>
     </main>
   );

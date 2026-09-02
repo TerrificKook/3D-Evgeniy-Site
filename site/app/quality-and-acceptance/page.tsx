@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { SiteLink } from '@/components/site-link';
+import { absoluteSiteUrl } from '@/config/site';
 
 export const metadata: Metadata = {
   title: 'Пилот, контроль и приёмка',
   description: 'Порядок квалификации, платного пилота, согласования проверки, фиксации ревизии и перехода к партии.',
-  alternates: { canonical: '/quality-and-acceptance/' },
+  alternates: { canonical: absoluteSiteUrl('/quality-and-acceptance') },
 };
 
 const stages = [
@@ -47,7 +48,7 @@ export default function QualityPage() {
       </section>
       <section className="section-shell inline-cta">
         <div><p className="eyebrow">Подготовьте критерий</p><h2>Как вы поймёте, что пилот подходит?</h2></div>
-        <Link className="button button-light" href="/contacts/">Описать проверку <ArrowRight aria-hidden="true" size={18} /></Link>
+        <SiteLink className="button button-light" href="/contacts/">Описать проверку <ArrowRight aria-hidden="true" size={18} /></SiteLink>
       </section>
     </main>
   );

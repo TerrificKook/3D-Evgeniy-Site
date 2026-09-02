@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ArrowRight, CheckCircle2, CircleAlert, XCircle } from 'lucide-react';
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { SiteLink } from '@/components/site-link';
+import { absoluteSiteUrl } from '@/config/site';
 
 export const metadata: Metadata = {
   title: 'Возможности и ограничения',
   description: 'Какие задачи можно квалифицировать, какие данные нужны и какие критичные применения исключаются на старте.',
-  alternates: { canonical: '/vozmozhnosti-i-ogranicheniya/' },
+  alternates: { canonical: absoluteSiteUrl('/vozmozhnosti-i-ogranicheniya') },
 };
 
 export default function LimitsPage() {
@@ -56,7 +57,7 @@ export default function LimitsPage() {
       </section>
       <section className="section-shell inline-cta">
         <div><p className="eyebrow">Не уверены в применимости?</p><h2>Опишите последствия отказа и способ проверки</h2></div>
-        <Link className="button button-light" href="/contacts/">Проверить задачу <ArrowRight aria-hidden="true" size={18} /></Link>
+        <SiteLink className="button button-light" href="/contacts/">Проверить задачу <ArrowRight aria-hidden="true" size={18} /></SiteLink>
       </section>
     </main>
   );

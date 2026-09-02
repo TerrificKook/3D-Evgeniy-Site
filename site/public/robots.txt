@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+Sitemap: https://terrifickook.github.io/3D-Evgeniy-Site/sitemap.xml

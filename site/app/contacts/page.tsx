@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { LeadForm } from '@/components/lead-form';
+import { absoluteSiteUrl } from '@/config/site';
 
 export const metadata: Metadata = {
   title: 'Прислать техническую задачу',
   description: 'Квалификационная форма: назначение, исходные данные, размеры, условия, количество, последствия отказа и способ проверки.',
-  alternates: { canonical: '/contacts/' },
+  alternates: { canonical: absoluteSiteUrl('/contacts') },
 };
 
 export default function ContactsPage() {

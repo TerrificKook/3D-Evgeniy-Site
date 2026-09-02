@@ -12,6 +12,15 @@ export interface LeadAdapter {
 
 export const mockLeadAdapter: LeadAdapter = {
   async submit(payload) {
+    if (process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true') {
+      return {
+        ok: true,
+        mode: 'mock',
+        stored: false,
+        message: 'Проверка пройдена. Данные не отправлены и не сохранены на сервере; черновик остаётся только в этом браузере.',
+      };
+    }
+
     const response = await fetch('/api/lead/', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },

@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ArrowRight, FileCheck2 } from 'lucide-react';
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { SiteLink } from '@/components/site-link';
+import { absoluteSiteUrl } from '@/config/site';
 import { publicCases } from '@/content/cases';
 
 export const metadata: Metadata = {
   title: 'Кейсы и шаблоны проектов',
   description: 'Только проверенные кейсы мастерской и явно отмеченные демонстрационные шаблоны без выдуманных результатов.',
-  alternates: { canonical: '/cases/' },
+  alternates: { canonical: absoluteSiteUrl('/cases') },
 };
 
 export default function CasesPage() {
@@ -31,7 +32,7 @@ export default function CasesPage() {
                 <span className="status-badge">{item.status === 'demo' ? 'Демонстрационный шаблон' : 'Клиентский проект'}</span>
                 <h2>{item.title}</h2>
                 <p>{item.problem}</p>
-                <Link href={`/cases/${item.slug}/`}>Открыть структуру <ArrowRight aria-hidden="true" size={17} /></Link>
+                <SiteLink href={`/cases/${item.slug}/`}>Открыть структуру <ArrowRight aria-hidden="true" size={17} /></SiteLink>
               </div>
             </article>
           ))}

@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { SiteLink } from '@/components/site-link';
+import { absoluteSiteUrl } from '@/config/site';
 import { publicCases } from '@/content/cases';
 
 export function generateStaticParams() { return publicCases.map((item) => ({ slug: item.slug })); }
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: item.title,
     description: item.problem,
-    alternates: { canonical: `/cases/${item.slug}/` },
+    alternates: { canonical: absoluteSiteUrl(`/cases/${item.slug}`) },
     openGraph: { title: item.title, description: item.problem, images: [] },
     twitter: { title: item.title, description: item.problem, images: [] },
   };
@@ -45,7 +46,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
       </section>
       <section className="section-shell inline-cta">
         <div><p className="eyebrow">Есть похожая задача?</p><h2>Опишите свои исходные данные</h2></div>
-        <Link className="button button-light" href="/contacts/">Перейти к форме <ArrowRight aria-hidden="true" size={18} /></Link>
+        <SiteLink className="button button-light" href="/contacts/">Перейти к форме <ArrowRight aria-hidden="true" size={18} /></SiteLink>
       </section>
     </main>
   );

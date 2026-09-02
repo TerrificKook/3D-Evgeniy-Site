@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { ArrowRight, Check, CircleAlert, ClipboardList } from 'lucide-react';
 import type { ServicePageContent } from '@/content/service-pages';
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { SiteLink } from '@/components/site-link';
 
 export function ServicePage({ content }: { content: ServicePageContent }) {
   return (
@@ -11,9 +11,9 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
         <p className="eyebrow">{content.eyebrow}</p>
         <h1>{content.title}</h1>
         <p className="page-lead">{content.intro}</p>
-        <Link className="button button-primary" href={`/contacts/?service=${content.slug}`}>
+        <SiteLink className="button button-primary" href={`/contacts/?service=${content.slug}`}>
           Прислать исходные данные <ArrowRight aria-hidden="true" size={18} />
-        </Link>
+        </SiteLink>
       </section>
 
       <section className="section-shell split-block section-block">
@@ -72,9 +72,9 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
 
       <section className="section-shell inline-cta">
         <div><p className="eyebrow">Следующий шаг</p><h2>Опишите изделие и способ проверки</h2></div>
-        <Link className="button button-light" href={`/contacts/?service=${content.slug}`}>
+        <SiteLink className="button button-light" href={`/contacts/?service=${content.slug}`}>
           Перейти к форме <ArrowRight aria-hidden="true" size={18} />
-        </Link>
+        </SiteLink>
       </section>
     </main>
   );

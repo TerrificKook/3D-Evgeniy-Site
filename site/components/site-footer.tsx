@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { SiteLink } from '@/components/site-link';
 import { siteConfig } from '@/config/site';
 
 export function SiteFooter() {
@@ -18,7 +18,7 @@ export function SiteFooter() {
         </div>
         <nav className="footer-links" aria-label="Дополнительная навигация">
           {contacts.map((item) => <a href={item.href} key={item.label}>{item.label}</a>)}
-          <Link href="/privacy/">Обработка данных</Link>
+          <SiteLink href="/privacy/">Обработка данных</SiteLink>
         </nav>
       </div>
     </footer>

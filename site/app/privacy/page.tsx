@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { absoluteSiteUrl } from '@/config/site';
 
 export const metadata: Metadata = {
   title: 'Информация об обработке данных в staging',
   description: 'Описание локального mock-режима формы. Не является утверждённой production-политикой обработки персональных данных.',
-  alternates: { canonical: '/privacy/' },
+  alternates: { canonical: absoluteSiteUrl('/privacy') },
   robots: { index: false, follow: false },
 };
 

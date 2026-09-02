@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { HomeLeadForm } from '@/components/home-lead-form';
-import { siteConfig } from '@/config/site';
+import { absoluteSiteUrl, siteConfig, withBasePath } from '@/config/site';
 
-export const metadata = { alternates: { canonical: '/' } };
+export const metadata = { alternates: { canonical: absoluteSiteUrl() } };
 
 const taskTypes = [
   { title: 'Крепления и кронштейны', image: '/images/category-bracket-generated.webp', className: 'gallery-item-large' },
@@ -71,7 +71,7 @@ export default function Home() {
         </div>
 
         <figure className="home-hero-visual">
-          <Image src="/images/hero-generated.webp" width={1536} height={1024} priority sizes="(max-width: 900px) 100vw, 50vw" alt="Визуализация функциональных пластиковых деталей на рабочем столе" />
+          <Image src={withBasePath('/images/hero-generated.webp')} width={1536} height={1024} priority sizes="(max-width: 900px) 100vw, 50vw" alt="Визуализация функциональных пластиковых деталей на рабочем столе" />
           <figcaption>Сгенерированная визуализация для прототипа</figcaption>
         </figure>
       </section>
@@ -88,7 +88,7 @@ export default function Home() {
           <div className="task-gallery">
             {taskTypes.map((task, index) => (
               <figure className={`gallery-item ${task.className}`} key={task.title}>
-                <Image src={task.image} width={1536} height={1024} loading="eager" sizes="(max-width: 650px) 100vw, (max-width: 900px) 50vw, 40vw" alt={`Визуализация: ${task.title.toLowerCase()}`} />
+                <Image src={withBasePath(task.image)} width={1536} height={1024} loading="eager" sizes="(max-width: 650px) 100vw, (max-width: 900px) 50vw, 40vw" alt={`Визуализация: ${task.title.toLowerCase()}`} />
                 <figcaption><span>{String(index + 1).padStart(2, '0')}</span>{task.title}</figcaption>
               </figure>
             ))}
@@ -100,7 +100,7 @@ export default function Home() {
       <section className="case-section" id="case" aria-labelledby="case-title">
         <div className="section-shell case-layout">
           <figure className="case-visual">
-            <Image src="/images/category-adapter-generated.webp" width={1536} height={1024} loading="eager" sizes="(max-width: 900px) 100vw, 52vw" alt="Визуализация соединителей для сборной трубной конструкции" />
+            <Image src={withBasePath('/images/category-adapter-generated.webp')} width={1536} height={1024} loading="eager" sizes="(max-width: 900px) 100vw, 52vw" alt="Визуализация соединителей для сборной трубной конструкции" />
             <figcaption>Визуализация типа задачи. Реальные фотографии проекта будут добавлены перед публикацией.</figcaption>
           </figure>
           <div className="case-copy">
@@ -130,7 +130,7 @@ export default function Home() {
         </div>
         <div className="production-layout">
           <figure className="production-visual">
-            <Image src="/images/workshop-generated.webp" width={1536} height={1024} loading="eager" sizes="(max-width: 900px) 100vw, 65vw" alt="Сгенерированная визуализация небольшой мастерской с 3D-принтерами" />
+            <Image src={withBasePath('/images/workshop-generated.webp')} width={1536} height={1024} loading="eager" sizes="(max-width: 900px) 100vw, 65vw" alt="Сгенерированная визуализация небольшой мастерской с 3D-принтерами" />
             <figcaption>Сгенерированная визуализация мастерской</figcaption>
           </figure>
           <ol className="equipment-list">
