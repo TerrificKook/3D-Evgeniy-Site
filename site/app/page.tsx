@@ -1,10 +1,39 @@
-import Link from 'next/link';
-import { ArrowRight, Box, Component, Gauge, ShieldCheck } from 'lucide-react';
-import { services } from '@/content/services';
-
-const icons = { component: Component, box: Box, gauge: Gauge };
+import Image from 'next/image';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { HomeLeadForm } from '@/components/home-lead-form';
+import { siteConfig } from '@/config/site';
 
 export const metadata = { alternates: { canonical: '/' } };
+
+const taskTypes = [
+  { title: 'Крепления и кронштейны', image: '/images/category-bracket-generated.webp', className: 'gallery-item-large' },
+  { title: 'Соединители и переходники', image: '/images/category-adapter-generated.webp', className: 'gallery-item-medium' },
+  { title: 'Заглушки и адаптеры', image: '/images/hero-generated.webp', className: 'gallery-item-small' },
+  { title: 'Корпуса и кожухи', image: '/images/category-enclosure-generated.webp', className: 'gallery-item-medium' },
+  { title: 'Оснастка и держатели', image: '/images/category-jig-generated.webp', className: 'gallery-item-large' },
+  { title: 'Детали по образцу', image: '/images/category-bracket-generated.webp', className: 'gallery-item-small gallery-item-detail' },
+];
+
+const orderSteps = [
+  ['Пришлите задачу', 'Фото, файл, эскиз или размеры.'],
+  ['Уточним требования', 'Количество, назначение и условия использования.'],
+  ['Сделаем образец', 'Если задача требует проверки, сначала согласуем тестовый экземпляр.'],
+  ['Запустим изготовление', 'После согласования детали можно повторять без возвращения к задаче с нуля.'],
+];
+
+const equipment = [
+  'Bambu Lab X1 Carbon Combo',
+  'Bambu Lab H2D Combo',
+  'Voron 2.4 350',
+  'Anycubic Photon Mono X2',
+];
+
+const contactOptions = [
+  { label: 'Telegram', value: siteConfig.contacts.telegram, href: siteConfig.contacts.telegram },
+  { label: 'WhatsApp', value: siteConfig.contacts.whatsapp, href: siteConfig.contacts.whatsapp },
+  { label: 'Телефон', value: siteConfig.contacts.phone, href: siteConfig.contacts.phone ? 'tel:' + String(siteConfig.contacts.phone) : '' },
+  { label: 'Email', value: siteConfig.contacts.email, href: siteConfig.contacts.email ? 'mailto:' + String(siteConfig.contacts.email) : '' },
+].filter((item) => item.value && item.href);
 
 export default function Home() {
   return (
@@ -15,101 +44,143 @@ export default function Home() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebSite',
-            name: 'Инженерная мастерская',
+            name: siteConfig.displayName,
             url: '/',
-            description: 'Квалификация деталей по образцу, корпусов электроники и производственной оснастки.',
+            description: 'Нестандартные пластиковые детали для бизнеса и производства.',
           }).replace(/</g, '\\u003c'),
         }}
       />
-      <section className="hero section-shell">
-        <div className="hero-copy">
-          <p className="eyebrow">Инженерная мастерская · локальный staging</p>
-          <h1>Функциональные пластиковые детали и корпуса для бизнеса</h1>
-          <p className="hero-lead">
-            Оцениваем некритичные детали по образцу, корпуса под электронику и производственную оснастку.
-            Сначала разбираем задачу и проверяем пилот — затем обсуждаем партию и повтор.
+
+      <section className="home-hero section-shell">
+        <div className="home-hero-copy">
+          <p className="eyebrow">Небольшая инженерная мастерская</p>
+          <h1>Нестандартные пластиковые детали для бизнеса и производства</h1>
+          <p className="home-hero-lead">
+            Изготавливаем крепления, соединители, адаптеры, корпуса, оснастку и детали по образцу.
+            От единичного прототипа до согласованной небольшой партии.
           </p>
-          <div className="hero-actions">
-            <Link className="button button-primary" href="/contacts/">
-              Прислать задачу на оценку <ArrowRight aria-hidden="true" size={18} />
-            </Link>
-            <Link className="text-link" href="/vozmozhnosti-i-ogranicheniya/">Какие задачи подходят</Link>
+          <div className="home-hero-actions">
+            <a className="button button-primary button-large" href="#contact">
+              Оценить задачу <ArrowUpRight aria-hidden="true" size={19} />
+            </a>
+            <p>Можно прислать фото, чертёж, STL / STEP, эскиз или размеры.</p>
           </div>
-          <p className="hero-note">
-            Не считаем цену за грамм и не обещаем применимость до технической квалификации.
-          </p>
+          <ul className="hero-tags" aria-label="Форматы работы">
+            {['По образцу', 'STL / STEP', 'Прототип', 'Повторяемая партия'].map((item) => <li key={item}>{item}</li>)}
+          </ul>
         </div>
 
-        <div className="technical-panel" aria-label="Порядок первичной оценки">
-          <div className="technical-panel-top"><span>Входные данные</span><span>01—04</span></div>
-          <ol>
-            <li><span>01</span>Назначение изделия</li>
-            <li><span>02</span>Размеры и исходные данные</li>
-            <li><span>03</span>Условия и последствия отказа</li>
-            <li><span>04</span>Количество и способ проверки</li>
-          </ol>
-          <div className="technical-panel-result">
-            <ShieldCheck aria-hidden="true" size={22} />
-            <p>Результат входа: «подходит», «не подходит» или «нужны данные».</p>
+        <figure className="home-hero-visual">
+          <Image src="/images/hero-generated.webp" width={1536} height={1024} priority sizes="(max-width: 900px) 100vw, 50vw" alt="Визуализация функциональных пластиковых деталей на рабочем столе" />
+          <figcaption>Сгенерированная визуализация для прототипа</figcaption>
+        </figure>
+      </section>
+
+      <section className="tasks-section" id="tasks" aria-labelledby="tasks-title">
+        <div className="section-shell section-block">
+          <div className="section-heading tasks-heading">
+            <div>
+              <p className="eyebrow">Примеры задач</p>
+              <h2 id="tasks-title">Что можно изготовить</h2>
+            </div>
+            <p>Функциональные детали под конкретную конструкцию, узел или рабочую операцию.</p>
           </div>
+          <div className="task-gallery">
+            {taskTypes.map((task, index) => (
+              <figure className={`gallery-item ${task.className}`} key={task.title}>
+                <Image src={task.image} width={1536} height={1024} loading="eager" sizes="(max-width: 650px) 100vw, (max-width: 900px) 50vw, 40vw" alt={`Визуализация: ${task.title.toLowerCase()}`} />
+                <figcaption><span>{String(index + 1).padStart(2, '0')}</span>{task.title}</figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="visual-note">Изображения в этой версии — сгенерированные иллюстрации направлений. Перед публикацией их заменят реальные фотографии мастерской.</p>
         </div>
       </section>
 
-      <section className="section-shell section-block" aria-labelledby="scenarios-title">
-        <div className="section-heading">
-          <p className="eyebrow">Три покупательские ситуации</p>
-          <h2 id="scenarios-title">Начните не с технологии, а со своей задачи</h2>
-        </div>
-        <div className="service-grid">
-          {services.map((service, index) => {
-            const Icon = icons[service.icon];
-            return (
-              <article className="service-card" key={service.slug}>
-                <div className="service-card-meta">
-                  <span className="service-icon"><Icon aria-hidden="true" size={22} /></span>
-                  <span>0{index + 1}</span>
+      <section className="case-section" id="case" aria-labelledby="case-title">
+        <div className="section-shell case-layout">
+          <figure className="case-visual">
+            <Image src="/images/category-adapter-generated.webp" width={1536} height={1024} loading="eager" sizes="(max-width: 900px) 100vw, 52vw" alt="Визуализация соединителей для сборной трубной конструкции" />
+            <figcaption>Визуализация типа задачи. Реальные фотографии проекта будут добавлены перед публикацией.</figcaption>
+          </figure>
+          <div className="case-copy">
+            <p className="eyebrow eyebrow-light">Опыт мастерской</p>
+            <h2 id="case-title">Нестандартная фурнитура для сборных конструкций</h2>
+            <p className="case-lead">Стандартной фурнитуры оказалось недостаточно, поэтому для задачи были изготовлены специальные пластиковые элементы под конкретную конструкцию.</p>
+            <div className="case-flow" aria-label="Принцип решения задачи">
+              {['Нестандартная задача', 'Специальная деталь', 'Повторяемое решение'].map((item, index) => (
+                <div key={item}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <strong>{item}</strong>
+                  {index < 2 && <ArrowRight aria-hidden="true" size={19} />}
                 </div>
-                <h3>{service.cardTitle}</h3>
-                <p>{service.summary}</p>
-                <Link href={service.href}>Разобрать задачу <ArrowRight aria-hidden="true" size={17} /></Link>
-              </article>
-            );
-          })}
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="section-shell section-block process-section" aria-labelledby="process-title">
-        <div className="section-heading compact">
-          <p className="eyebrow">Рабочая схема</p>
-          <h2 id="process-title">От задачи к воспроизводимой версии</h2>
+      <section className="production-section section-shell section-block" id="production" aria-labelledby="production-title">
+        <div className="production-heading">
+          <div>
+            <p className="eyebrow">Оборудование</p>
+            <h2 id="production-title">Производство</h2>
+          </div>
+          <p>Несколько принтеров позволяют параллельно делать прототипы, проверочные экземпляры и повторяемые детали. Возможность производства конкретной задачи оцениваем по файлу, образцу и условиям эксплуатации.</p>
         </div>
-        <ol className="process-list">
-          {[
-            ['Квалификация', 'Проверяем назначение, исходные данные и риски.'],
-            ['Подготовка', 'Отдельно оцениваем инженерную работу и тестовый экземпляр.'],
-            ['Платный пилот', 'Согласуем, как именно будет проверяться результат.'],
-            ['Партия', 'Рассчитывается только после принятого пилота.'],
-            ['Повтор', 'Сохраняется одобренная ревизия изделия.'],
-          ].map(([title, text], index) => (
-            <li key={title}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <div><h3>{title}</h3><p>{text}</p></div>
-            </li>
-          ))}
-        </ol>
+        <div className="production-layout">
+          <figure className="production-visual">
+            <Image src="/images/workshop-generated.webp" width={1536} height={1024} loading="eager" sizes="(max-width: 900px) 100vw, 65vw" alt="Сгенерированная визуализация небольшой мастерской с 3D-принтерами" />
+            <figcaption>Сгенерированная визуализация мастерской</figcaption>
+          </figure>
+          <ol className="equipment-list">
+            {equipment.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, '0')}</span><strong>{item}</strong></li>)}
+          </ol>
+        </div>
       </section>
 
-      <section className="section-shell closing-panel">
-        <div>
-          <p className="eyebrow">Сначала безопасность и проверка</p>
-          <h2>Не каждая деталь подходит для такого способа изготовления</h2>
+      <section className="order-section" id="order" aria-labelledby="order-title">
+        <div className="section-shell section-block">
+          <div className="section-heading order-heading">
+            <p className="eyebrow">Четыре понятных шага</p>
+            <h2 id="order-title">Как заказать деталь</h2>
+          </div>
+          <ol className="order-steps">
+            {orderSteps.map(([title, text], index) => (
+              <li key={title}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </li>
+            ))}
+          </ol>
         </div>
+      </section>
+
+      <section className="limits-section section-shell" aria-labelledby="limits-title">
+        <p className="eyebrow">Важно до начала работы</p>
         <div>
-          <p>
-            Критичные и ответственные задачи без отдельной квалификации не принимаются. Материал,
-            конструкция, срок и объём определяются после оценки исходных данных.
-          </p>
-          <Link className="button button-light" href="/contacts/">Описать задачу <ArrowRight aria-hidden="true" size={18} /></Link>
+          <h2 id="limits-title">3D-печать подходит не для каждой детали</h2>
+          <p>До начала работы оцениваем нагрузку, температуру, условия эксплуатации и требования к детали. Если 3D-печать для задачи технически не подходит, лучше сказать об этом до изготовления образца.</p>
+        </div>
+      </section>
+
+      <section className="contact-section" id="contact" aria-labelledby="contact-title">
+        <div className="section-shell contact-layout">
+          <div className="contact-copy">
+            <p className="eyebrow eyebrow-light">Начнём с вашей задачи</p>
+            <h2 id="contact-title">Есть деталь или задача?</h2>
+            <p>Пришлите фото, файл, эскиз или размеры. Посмотрим, подходит ли задача для изготовления и что потребуется для оценки.</p>
+            <a className="button button-light button-large" href="#task-form">
+              Оценить задачу <ArrowUpRight aria-hidden="true" size={19} />
+            </a>
+            {contactOptions.length > 0 && (
+              <div className="contact-options" aria-label="Контакты мастерской">
+                {contactOptions.map((item) => <a href={item.href} key={item.label}>{item.label}<ArrowUpRight aria-hidden="true" size={15} /></a>)}
+              </div>
+            )}
+          </div>
+          <HomeLeadForm />
         </div>
       </section>
     </main>
