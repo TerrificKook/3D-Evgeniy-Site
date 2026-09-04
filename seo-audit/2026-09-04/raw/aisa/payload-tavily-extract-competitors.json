@@ -1,0 +1,16 @@
+{
+  "urls": [
+    "https://technar3d.ru/service/proizvodstvo-detalei-iz-plastika",
+    "https://msk.nktech3d.ru/izgotovleniye-kopiy-detaley-po-obraztsu",
+    "https://cubicprints.ru/izgotovlenie-korpusov/",
+    "https://meritogroup.ru/3d-pechat-korpusov/",
+    "https://modelica3d.ru/biznesu/zapchasti",
+    "https://3dzipper.ru/articles/3d-pechat-osnastka",
+    "https://fdmfabrika.ru/otrasli/proizvodstvo-osnastka",
+    "https://3droom.pro/izgotovlenie-osnastki"
+  ],
+  "extract_depth": "basic",
+  "format": "markdown",
+  "include_images": false,
+  "include_usage": true
+}

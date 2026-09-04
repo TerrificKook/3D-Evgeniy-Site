@@ -1,9 +1,18 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { HomeLeadForm } from '@/components/home-lead-form';
 import { absoluteSiteUrl, siteConfig, withBasePath } from '@/config/site';
 
-export const metadata = { alternates: { canonical: absoluteSiteUrl() } };
+const homeTitle = '3D-печать на заказ для бизнеса в Москве и области';
+const homeDescription = 'Изготовление нестандартных пластиковых деталей в Москве: корпуса для электроники, детали по образцу и оснастка. Сначала техническая задача и пилот, затем повтор.';
+
+export const metadata: Metadata = {
+  title: homeTitle,
+  description: homeDescription,
+  alternates: { canonical: absoluteSiteUrl() },
+  openGraph: { title: homeTitle, description: homeDescription, url: absoluteSiteUrl() },
+};
 
 const taskTypes = [
   { title: 'Крепления и кронштейны', image: '/images/category-bracket-generated.webp', className: 'gallery-item-large' },
@@ -45,19 +54,20 @@ export default function Home() {
             '@context': 'https://schema.org',
             '@type': 'WebSite',
             name: siteConfig.displayName,
-            url: '/',
-            description: 'Нестандартные пластиковые детали для бизнеса и производства.',
+            url: absoluteSiteUrl(),
+            description: homeDescription,
+            inLanguage: 'ru-RU',
           }).replace(/</g, '\\u003c'),
         }}
       />
 
       <section className="home-hero section-shell">
         <div className="home-hero-copy">
-          <p className="eyebrow">Небольшая инженерная мастерская</p>
-          <h1>Нестандартные пластиковые детали для бизнеса и производства</h1>
+          <p className="eyebrow">Инженерная мастерская в Москве</p>
+          <h1>3D-печать пластиковых деталей для бизнеса в Москве и Московской области</h1>
           <p className="home-hero-lead">
-            Изготавливаем крепления, соединители, адаптеры, корпуса, оснастку и детали по образцу.
-            От единичного прототипа до согласованной небольшой партии.
+            Изготавливаем корпуса для электроники, детали по образцу, крепления и оснастку.
+            Сначала разбираем техническую задачу и проверяем пилот, затем согласованную версию можно повторять небольшой партией.
           </p>
           <div className="home-hero-actions">
             <a className="button button-primary button-large" href="#contact">

@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-09-04T14:12:00.9556256+00:00",
+  "provider": "tavily",
+  "endpoint": "/search",
+  "payload_file": "raw\\aisa\\payload-tavily-enclosures.json",
+  "response_file": "raw\\aisa\\response-tavily-enclosures.json",
+  "exit_code": 0,
+  "available_before_micros_usd": 5472000,
+  "available_after_micros_usd": 5456000,
+  "observed_spend_micros_usd": 16000,
+  "observed_spend_usd": 0.016,
+  "response_status_code": null,
+  "response_status_message": null,
+  "response_reported_cost_usd": null,
+  "response_task_errors": null
+}

@@ -10,7 +10,7 @@ export const siteConfig = {
   origin: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   basePath: githubPagesBasePath,
   contacts: { phone: '', email: '', telegram: '', whatsapp: '' },
-  geography: '',
+  geography: 'Москва и Московская область',
   responseSla: '',
 } as const;
 

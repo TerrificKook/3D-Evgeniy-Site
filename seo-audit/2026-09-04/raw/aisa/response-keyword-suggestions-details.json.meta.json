@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-09-04T14:08:13.9869019+00:00",
+  "endpoint": "/dataforseo_labs/google/keyword_suggestions/live",
+  "payload_file": "raw\\aisa\\payload-keyword-suggestions-details.json",
+  "response_file": "raw\\aisa\\response-keyword-suggestions-details.json",
+  "exit_code": 0,
+  "available_before_micros_usd": 5488000,
+  "available_after_micros_usd": 5488000,
+  "observed_spend_micros_usd": 0,
+  "observed_spend_usd": 0
+}

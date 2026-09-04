@@ -4,5 +4,10 @@ import { servicePages } from '@/content/service-pages';
 import { absoluteSiteUrl } from '@/config/site';
 
 const content = servicePages['korpusa-dlya-elektroniki'];
-export const metadata: Metadata = { title: content.eyebrow, description: content.description, alternates: { canonical: absoluteSiteUrl('/korpusa-dlya-elektroniki') } };
+export const metadata: Metadata = {
+  title: content.seoTitle,
+  description: content.description,
+  alternates: { canonical: absoluteSiteUrl('/korpusa-dlya-elektroniki') },
+  openGraph: { title: content.seoTitle, description: content.description, url: absoluteSiteUrl('/korpusa-dlya-elektroniki') },
+};
 export default function Page() { return <ServicePage content={content} />; }

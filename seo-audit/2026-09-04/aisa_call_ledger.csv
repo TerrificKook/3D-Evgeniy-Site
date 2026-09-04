@@ -1,0 +1,7 @@
+"Дата UTC","Провайдер","Метод","Назначение","Результат","Списание USD","Баланс до USD","Баланс после USD","Файл ответа","Комментарий"
+"2026-09-04T14:08:13Z","DataForSEO","keyword_suggestions/live","Пластиковые детали, Москва","Ошибка задачи","0.000","5.488","5.488","raw/aisa/response-keyword-suggestions-details.json","Код города не поддержан"
+"2026-09-04T14:09:31Z","DataForSEO","keyword_suggestions/live","Пластиковые детали, Россия","Ошибка задачи","0.000","5.488","5.488","raw/aisa/response-keyword-suggestions-details-ru.json","Россия не поддерживается DataForSEO; автоматических повторов не было"
+"2026-09-04T14:11:26Z","Tavily","search","Конкуренты: детали по образцу","Успешно","0.016","5.488","5.472","raw/aisa/response-tavily-details.json","10 результатов"
+"2026-09-04T14:12:00Z","Tavily","search","Конкуренты: корпуса электроники","Успешно","0.016","5.472","5.456","raw/aisa/response-tavily-enclosures.json","10 результатов"
+"2026-09-04T14:12:56Z","Tavily","search","Конкуренты: пластиковая оснастка","Успешно","0.016","5.456","5.440","raw/aisa/response-tavily-fixtures.json","10 результатов"
+"2026-09-04T14:14:22Z","Tavily","extract","Содержание восьми выбранных страниц","Успешно","0.016","5.440","5.424","raw/aisa/response-tavily-extract-competitors.json","8 успешно, 0 ошибок, 2 кредита Tavily"
